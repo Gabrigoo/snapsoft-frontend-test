@@ -28,17 +28,31 @@ const GameContainer = (props) => {
 
   return (
     <div id="game-container">
-      {props.deck.map((card, index) => {
-        return <Card
-          key={card.value + index}
-          value={card.value}
-          index={index}
-          flipped={card.flipped}
-          hit={card.hit}
-          onCardClick={onCardClick}
-        />
-      })}
+      <div id="inner-header">
+        <div id="inner-header-left">
+          <p id="tries-label">Current tries:</p>
+          <p id="tries-number">{props.currentTries}</p>
+        </div>
+        <div id="inner-header-center">
+          <p id="best-label">Best:</p>
+          <p id="best-number">{props.bestScore}</p>
+        </div>
+        <button id="restart-button">RESTART</button>
+      </div>
+      <div id="card-container">
+        {props.deck.map((card, index) => {
+          return <Card
+            key={card.value + index}
+            value={card.value}
+            index={index}
+            flipped={card.flipped}
+            hit={card.hit}
+            onCardClick={onCardClick}
+          />
+        })}
+      </div>
     </div>
+    
   )
 }
 
@@ -46,6 +60,8 @@ const mapStateToProps = (state) => ({
   deck: state.deck,
   currentFlipped: state.currentFlipped,
   blockNewAction: state.blockNewAction,
+  currentTries: state.currentTries,
+  bestScore: state.bestScore,
 });
 
 export default connect(

@@ -11,5 +11,41 @@
   gap: 12px;
 }
 #snapsoft-logo {
+  margin-left: 10px;
   height: 50%;
+}
+#header-middle {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#start-game-button {
+  color: white;
+  height: 80%;
+  width: 180px;
+  font-weight: bold;
+  background-color: rgb(255, 51, 0);
+  border: none;
+  border-radius: 5px;
+}
+#size-form {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+#deck-size {
+  font-size: 20px;
+  height: 80%;
+  padding: 0 20px 0 20px;
+  border-radius: 5px;
+}
+#deck-size-label {
+  color: grey;
+  font-size: 12px;
 }

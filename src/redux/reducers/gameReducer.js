@@ -12,6 +12,8 @@ const INITIAL_STATE = {
   deck: [],
   currentFlipped: [],
   blockNewAction: false,
+  currentTries: 0,
+  bestScore: 0,
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -1,10 +1,59 @@
+button {
+  cursor: pointer;
+}
+select {
+  cursor: pointer;
+}
 #game-container {
   margin: auto;
-  margin-top: 100px;
-  max-width: 790px;
+  margin-top: 70px;
+  margin-bottom: 50px;
+  max-width: 840px;
+}
+#inner-header {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#inner-header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+#tries-label, #best-label {
+  color: black;
+}
+#tries-number {
+  font-size: 22px;
+}
+#inner-header-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#best-label {
+  margin-bottom: 0;
+}
+#best-number {
+  font-size: 40px;
+  margin: 0 0 15px 0;
+}
+#card-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
+}
+#restart-button {
+  font-size: 20px;
+  font-weight: bold;
+  height: 50%;
+  width: 130px;
+  background: none;
+  border: 2px solid black;
+  border-radius: 5px;
 }
