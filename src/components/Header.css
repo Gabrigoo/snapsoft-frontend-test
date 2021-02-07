@@ -27,6 +27,7 @@
   color: white;
   height: 80%;
   width: 180px;
+  margin-right: 10px;
   font-weight: bold;
   background-color: rgb(255, 51, 0);
   border: none;
@@ -48,4 +49,39 @@
 #deck-size-label {
   color: grey;
   font-size: 12px;
+}
+
+@media (max-width: 610px) {
+  #snapsoft-logo {
+    display: none;
+  }
+  #game-title {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 410px) {
+  #game-title {
+    display: none;
+  }
+  #header-middle {
+    gap: 5px;
+    margin-left: 5px;
+  }
+}
+@media (max-width: 320px) {
+  #game-title {
+    display: none;
+  }
+  #header-middle {
+    gap: 5px;
+    margin-left: 5px;
+  }
+  #start-game-button {
+    font-size: 5vw;
+    width: 40vw;
+  }
+  #deck-size {
+    padding: 0 5px 0 5px;
+  }
 }

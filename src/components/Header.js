@@ -18,8 +18,8 @@ const Header = (props) => {
   
   return (
     <div id="header">
-      <img id="snapsoft-logo" src={snapsoftLogo} />
-      <h4>MEMORY GAME</h4>
+      <img id="snapsoft-logo" src={snapsoftLogo} alt="snapsoft-logo"/>
+      <h4 id="game-title">MEMORY GAME</h4>
       <div id="header-middle">
         <form id="size-form" action="/action_page.php">
           <label id="deck-size-label" htmlFor="deck-size">Deck size: </label>

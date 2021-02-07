@@ -8,10 +8,10 @@ const Card = ({ value, index, flipped, hit, onCardClick }) => {
   return (
     <button
       onClick={() => onCardClick(value, index)}
-      className={'card'}
+      className={`card ${hit ? 'no-background' : ''}`}
       disabled={hit}
     >
-      {flipped ? <img className="card-image" src={logos[value]} /> : null}
+      {flipped ? <img className="card-image" src={logos[value]} alt={value}/> : null}
     </button>
   )
 }

@@ -10,6 +10,10 @@ select {
   margin-bottom: 50px;
   max-width: 840px;
 }
+#welcome-page {
+  margin-top: 100px;
+  text-align: center;
+}
 #inner-header {
   height: 100px;
   display: flex;
@@ -20,19 +24,24 @@ select {
 #inner-header-left {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
 }
 #tries-label, #best-label {
-  color: black;
+  margin: 0;
+  color: rgb(116, 116, 116);
 }
 #tries-number {
+  margin: 0;
   font-size: 22px;
 }
 #inner-header-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 5px;
 }
 #best-label {
   margin-bottom: 0;
@@ -45,7 +54,7 @@ select {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 10px;
 }
 #restart-button {
@@ -56,4 +65,27 @@ select {
   background: none;
   border: 2px solid black;
   border-radius: 5px;
+}
+
+@media (max-width: 850px) {
+  #game-container {
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  #restart-button {
+    font-size: 12px;
+    width: 80px;
+    height: 40%;
+  }
+}
+
+@media (max-width: 220px) {
+  #restart-button {
+    font-size: 8px;
+    width: 60px;
+    height: 30%;
+  }
 }

@@ -10,6 +10,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
+  gameOn: false,
   deckSize: 10,
   deck: [],
   currentFlipped: [],
@@ -26,6 +27,7 @@ export default (state = INITIAL_STATE, action) => {
     case START_NEW_GAME:
       return {
         ...state,
+        gameOn: true,
         deck: action.payload,
         currentFlipped: [],
         blockNewAction: false,

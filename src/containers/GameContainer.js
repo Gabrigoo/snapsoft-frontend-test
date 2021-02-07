@@ -34,37 +34,58 @@ const GameContainer = (props) => {
     }
   }
 
+  let content;
+
+  if (props.gameOn) {
+      content = (
+        <>
+          <div id="inner-header">
+            <div id="inner-header-left">
+              <p id="tries-label">Current tries:</p>
+              <p id="tries-number">{props.currentTries}</p>
+            </div>
+            <div id="inner-header-center">
+              <p id="best-label">Best:</p>
+              <p id="best-number">{props.bestScore}</p>
+            </div>
+            <button onClick={() => props.startNewGame(props.deck.length)} id="restart-button">RESTART</button>
+          </div>
+          <div id="card-container">
+            {props.deck.map((card, index) => {
+              return <Card
+                key={card.value + index}
+                value={card.value}
+                index={index}
+                flipped={card.flipped}
+                hit={card.hit}
+                onCardClick={onCardClick}
+              />
+            })}
+          </div>
+        </>
+    )
+  } else {
+    content = (
+      <div id="welcome-page">
+        <h1>SNAPSOFT</h1>
+        <h3>MEMORY GAME</h3>
+        <p>Click on the cards to reveal them.</p>
+        <p>Find two matching cards in succession to gain points.</p>
+        <p>The game ends when you find all the matching pairs</p>
+        <p>Good luck!</p>
+      </div>
+    )
+  }
+
   return (
     <div id="game-container">
-      <div id="inner-header">
-        <div id="inner-header-left">
-          <p id="tries-label">Current tries:</p>
-          <p id="tries-number">{props.currentTries}</p>
-        </div>
-        <div id="inner-header-center">
-          <p id="best-label">Best:</p>
-          <p id="best-number">{props.bestScore}</p>
-        </div>
-        <button onClick={() => props.startNewGame(props.deck.length)} id="restart-button">RESTART</button>
-      </div>
-      <div id="card-container">
-        {props.deck.map((card, index) => {
-          return <Card
-            key={card.value + index}
-            value={card.value}
-            index={index}
-            flipped={card.flipped}
-            hit={card.hit}
-            onCardClick={onCardClick}
-          />
-        })}
-      </div>
+      {content}
     </div>
-    
   )
 }
 
 const mapStateToProps = (state) => ({
+  gameOn: state.gameOn,
   deck: state.deck,
   deckSize: state.deckSize,
   matchedPairs: state.matchedPairs,
