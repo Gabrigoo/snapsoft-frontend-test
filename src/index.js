@@ -3,19 +3,32 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { PersistGate } from 'redux-persist/integration/react'
 
 import App from './App';
 import gameReducer from './redux/reducers/gameReducer';
 import './index.css';
 
+const persistConfig = {
+  key: 'gameReducer',
+  storage,
+};
+const pReducer = persistReducer(persistConfig, gameReducer);
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(gameReducer, composeEnhancers());
+const store = createStore(pReducer, composeEnhancers());
+
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <PersistGate loading={null} persistor={persistor}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
