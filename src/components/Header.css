@@ -1,0 +1,14 @@
+#header {
+  color: white;
+  height: 55px;
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  background: black;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#snapsoft-logo {
+  height: 50%;
+}
