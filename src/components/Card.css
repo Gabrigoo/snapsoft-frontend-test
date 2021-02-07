@@ -4,3 +4,7 @@
   width: 150px;
   border-radius: 15px;
 }
+.card-image {
+  height: 100%;
+  width: 100%;
+}

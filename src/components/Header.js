@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setDeckSize } from '../redux/actions';
+import { setDeckSize, startNewGame } from '../redux/actions';
 import './Header.css';
 import snapsoftLogo from '../assets/images/snapsoft-logo.svg'
 
@@ -9,6 +9,10 @@ const Header = (props) => {
 
   const onDropdownChange = (e) => {
     props.setDeckSize(e.target.value)
+  }
+
+  const startButtonClick = () => {
+    props.startNewGame(props.deckSize)
   }
   
   return (
@@ -28,7 +32,7 @@ const Header = (props) => {
           <option value="20">20</option>
         </select>
       </form>
-      <button>START NEW GAME</button>
+      <button onClick={startButtonClick}>START NEW GAME</button>
     </div>
   );
 };
@@ -38,6 +42,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(
-  mapStateToProps,{ setDeckSize },
+  mapStateToProps,{ setDeckSize, startNewGame },
 )(Header);
 
