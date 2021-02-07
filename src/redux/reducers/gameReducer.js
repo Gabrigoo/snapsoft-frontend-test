@@ -5,6 +5,8 @@ import {
   FLIP_CARD_SECOND_CORRECT,
   FLIP_CARD_SECOND_FALSE_INIT,
   FLIP_CARD_SECOND_FALSE_DELAY,
+  SET_NEW_BEST_SCORE,
+  RESET_BEST_SCORE,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -14,6 +16,7 @@ const INITIAL_STATE = {
   blockNewAction: false,
   currentTries: 0,
   bestScore: 0,
+  matchedPairs: 0,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,7 +24,19 @@ export default (state = INITIAL_STATE, action) => {
     case SET_DECK_SIZE:
       return { ...state, deckSize: action.payload}
     case START_NEW_GAME:
-      return { ...state, deck: action.payload, currentFlipped: [], blockNewAction: false }
+      return {
+        ...state,
+        deck: action.payload,
+        currentFlipped: [],
+        blockNewAction: false,
+        currentTries: 0,
+        matchedPairs: 0,
+      }
+    case RESET_BEST_SCORE:
+      return {
+        ...state,
+        bestScore: 0,
+      }
     case FLIP_CARD_FIRST:
       const newDeckFirstFlip = [...state.deck];
 
@@ -50,7 +65,9 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentFlipped: [],
-        deck: newDeckSecondCorrect
+        deck: newDeckSecondCorrect,
+        currentTries: state.currentTries + 1,
+        matchedPairs: state.matchedPairs + 1,
       }
     case FLIP_CARD_SECOND_FALSE_INIT:
       const newDeckSecondFalseInit = [...state.deck];
@@ -63,7 +80,8 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         deck: newDeckSecondFalseInit,
-        blockNewAction: true
+        blockNewAction: true,
+        currentTries: state.currentTries + 1,
       }
     case FLIP_CARD_SECOND_FALSE_DELAY:
       const newDeckSecondFalseDelay = [...state.deck];
@@ -81,6 +99,11 @@ export default (state = INITIAL_STATE, action) => {
         deck: newDeckSecondFalseDelay,
         currentFlipped: [],
         blockNewAction: false
+      }
+    case SET_NEW_BEST_SCORE:
+      return {
+        ...state,
+        bestScore: state.currentTries
       }
     default:
       return state;

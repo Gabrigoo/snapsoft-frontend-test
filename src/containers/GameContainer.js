@@ -5,11 +5,19 @@ import { flipCardFirst,
   flipCardSecondCorrect,
   flipCardSecondFalseInit,
   flipCardSecondFalseDelay,
+  startNewGame,
+  setNewBestScore,
 } from '../redux/actions';
 import Card from '../components/Card';
 import './GameContainer.css';
 
 const GameContainer = (props) => {
+
+  if (props.matchedPairs === parseInt(props.deckSize) / 2) {
+    if ((props.currentTries < props.bestScore) || (props.bestScore === 0)) {
+      props.setNewBestScore()
+    }
+  }
 
   const onCardClick = (value, index) => {
     if (props.currentFlipped.length === 0) {
@@ -37,7 +45,7 @@ const GameContainer = (props) => {
           <p id="best-label">Best:</p>
           <p id="best-number">{props.bestScore}</p>
         </div>
-        <button id="restart-button">RESTART</button>
+        <button onClick={() => props.startNewGame(props.deck.length)} id="restart-button">RESTART</button>
       </div>
       <div id="card-container">
         {props.deck.map((card, index) => {
@@ -58,6 +66,8 @@ const GameContainer = (props) => {
 
 const mapStateToProps = (state) => ({
   deck: state.deck,
+  deckSize: state.deckSize,
+  matchedPairs: state.matchedPairs,
   currentFlipped: state.currentFlipped,
   blockNewAction: state.blockNewAction,
   currentTries: state.currentTries,
@@ -65,5 +75,13 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(
-  mapStateToProps, { flipCardFirst, flipCardSecondCorrect, flipCardSecondFalseInit, flipCardSecondFalseDelay },
+  mapStateToProps,
+  {
+    flipCardFirst,
+    flipCardSecondCorrect,
+    flipCardSecondFalseInit,
+    flipCardSecondFalseDelay,
+    startNewGame,
+    setNewBestScore,
+  },
 )(GameContainer);

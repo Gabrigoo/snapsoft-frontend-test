@@ -5,6 +5,8 @@ import {
   FLIP_CARD_SECOND_CORRECT,
   FLIP_CARD_SECOND_FALSE_INIT,
   FLIP_CARD_SECOND_FALSE_DELAY,
+  SET_NEW_BEST_SCORE,
+  RESET_BEST_SCORE,
 } from './types';
 import cardList from '../../assets/images/cards/cardList';
 
@@ -72,5 +74,17 @@ export const flipCardSecondFalseDelay = (value, index) => {
   return {
     type: FLIP_CARD_SECOND_FALSE_DELAY,
     payload: { value, index }
+  }
+};
+
+export const setNewBestScore = () => {
+  return {
+    type: SET_NEW_BEST_SCORE,
+  }
+};
+
+export const resetBestScore = () => {
+  return {
+    type: RESET_BEST_SCORE,
   }
 };

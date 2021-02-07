@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setDeckSize, startNewGame } from '../redux/actions';
+import { setDeckSize, startNewGame, resetBestScore } from '../redux/actions';
 import './Header.css';
 import snapsoftLogo from '../assets/images/snapsoft-logo.svg'
 
 const Header = (props) => {
 
   const onDropdownChange = (e) => {
-    props.setDeckSize(e.target.value)
+    props.setDeckSize(e.target.value);
   }
 
   const startButtonClick = () => {
-    props.startNewGame(props.deckSize)
+    props.startNewGame(props.deckSize);
+    props.resetBestScore();
   }
   
   return (
@@ -44,6 +45,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(
-  mapStateToProps,{ setDeckSize, startNewGame },
+  mapStateToProps,{ setDeckSize, startNewGame, resetBestScore },
 )(Header);
 
