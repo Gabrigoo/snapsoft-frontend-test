@@ -1,10 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
+import Card from '../components/Card';
+import './GameContainer.css';
 
 const GameContainer = () => {
   return (
-    <div>
-      <Header />
+    <div id="game-container">
+      <Card />
     </div>
   )
 }
