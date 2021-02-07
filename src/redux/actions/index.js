@@ -3,7 +3,8 @@ import {
   START_NEW_GAME,
   FLIP_CARD_FIRST,
   FLIP_CARD_SECOND_CORRECT,
-  FLIP_CARD_SECOND_FALSE
+  FLIP_CARD_SECOND_FALSE_INIT,
+  FLIP_CARD_SECOND_FALSE_DELAY,
 } from './types';
 import cardList from '../../assets/images/cards/cardList';
 
@@ -60,9 +61,16 @@ export const flipCardSecondCorrect = (value, index) => {
   }
 };
 
-export const flipCardSecondFalse = (value, index) => {
+export const flipCardSecondFalseInit = (value, index) => {
   return {
-    type: FLIP_CARD_SECOND_FALSE,
+    type: FLIP_CARD_SECOND_FALSE_INIT,
+    payload: { value, index }
+  }
+};
+
+export const flipCardSecondFalseDelay = (value, index) => {
+  return {
+    type: FLIP_CARD_SECOND_FALSE_DELAY,
     payload: { value, index }
   }
 };
