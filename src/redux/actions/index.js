@@ -1,6 +1,9 @@
 import {
   SET_DECK_SIZE,
-  START_NEW_GAME
+  START_NEW_GAME,
+  FLIP_CARD_FIRST,
+  FLIP_CARD_SECOND_CORRECT,
+  FLIP_CARD_SECOND_FALSE
 } from './types';
 import cardList from '../../assets/images/cards/cardList';
 
@@ -40,5 +43,26 @@ export const startNewGame = (size) => {
   return {
     type: START_NEW_GAME,
     payload: newDeck
+  }
+};
+
+export const flipCardFirst = (value, index) => {
+  return {
+    type: FLIP_CARD_FIRST,
+    payload: { value, index }
+  }
+};
+
+export const flipCardSecondCorrect = (value, index) => {
+  return {
+    type: FLIP_CARD_SECOND_CORRECT,
+    payload: { value, index }
+  }
+};
+
+export const flipCardSecondFalse = (value, index) => {
+  return {
+    type: FLIP_CARD_SECOND_FALSE,
+    payload: { value, index }
   }
 };

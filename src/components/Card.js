@@ -3,12 +3,16 @@ import * as logos from '../assets/images/cards';
 
 import './Card.css';
 
-const Card = (props) => {
+const Card = ({ value, index, flipped, hit, onCardClick }) => {
 
   return (
-    <div className="card">
-      {props.flipped ? <img className="card-image" src={logos[props.value]} /> : null}
-    </div>
+    <button
+      onClick={() => onCardClick(value, index)}
+      className={'card'}
+      disabled={hit}
+    >
+      {flipped ? <img className="card-image" src={logos[value]} /> : null}
+    </button>
   )
 }
 
